@@ -2,7 +2,7 @@
 @inherits LayoutComponentBase
 
 <AntDesign.ProLayout.BasicLayout 
-    Logo="@("https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg")"
+    Logo="@("assets/logo.svg")"
     MenuData="_menuData">
     <RightContentRender>
         <Server.Components.RightContent />
@@ -11,7 +11,7 @@
         @Body
     </ChildContent>
     <FooterRender>
-        <FooterView Copyright="2021 Ant Design Blazor" Links="Links"></FooterView>
+        <FooterView Copyright="@($"2002 - {DateTime.Now.Year} USTC Amateur Radio Station")" Links="Links"></FooterView>
     </FooterRender>
 </AntDesign.ProLayout.BasicLayout>
 <SettingDrawer />
@@ -33,23 +33,23 @@
     {
         new LinkItem
         {
-            Key = "Ant Design Blazor",
-            Title = "Ant Design Blazor",
-            Href = "https://antblazor.com",
+            Key = "qsl.net",
+            Title = "QSL.NET/BY6DX",
+            Href = "https://www.qsl.net/by6dx/",
             BlankTarget = true,
         },
         new LinkItem
         {
             Key = "github",
             Title = (RenderFragment)(@<Icon Type="github" />),
-            Href = "https://github.com/ant-design-blazor/ant-design-pro-blazor",
+            Href = "https://github.com/BY6DX",
             BlankTarget = true,
         },
         new LinkItem
         {
-            Key = "Blazor",
-            Title = "Blazor",
-            Href = "https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor?WT.mc_id=DT-MVP-5003987",
+            Key = "email",
+            Title = "radio@ustc.edu.cn",
+            Href = "mailto:radio@ustc.edu.cn",
             BlankTarget = true,
         }
     };
