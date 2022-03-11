@@ -7,6 +7,8 @@
   <ItemGroup>
     <PackageReference Include="AntDesign.Charts" Version="0.2.1" />
     <PackageReference Include="AntDesign.ProLayout" Version="0.1.10" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.1" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql.Json.Microsoft" Version="6.0.1" />
     <PackageReference Include="System.Net.Http.Json" Version="6.0.0" />
   </ItemGroup>
   

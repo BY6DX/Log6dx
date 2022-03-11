@@ -1,17 +1,17 @@
-﻿@namespace Server
-@inherits LayoutComponentBase
+﻿@inherits LayoutComponentBase
 
 <AntDesign.ProLayout.BasicLayout 
     Logo="@("assets/logo.svg")"
-    MenuData="_menuData">
+    MenuData="_menuData"
+    MenuRender = "@true">
     <RightContentRender>
-        <Server.Components.RightContent />
+        <Server.Components.HeaderRightContent />
     </RightContentRender>
     <ChildContent>
         @Body
     </ChildContent>
     <FooterRender>
-        <FooterView Copyright="@($"2002 - {DateTime.Now.Year} USTC Amateur Radio Station")" Links="Links"></FooterView>
+        <FooterView Copyright="@($"{DateTime.Now.Year} USTC Amateur Radio Club")" Links="Links"></FooterView>
     </FooterRender>
 </AntDesign.ProLayout.BasicLayout>
 <SettingDrawer />

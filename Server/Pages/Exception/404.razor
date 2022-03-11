@@ -1,0 +1,12 @@
+﻿@page "/404"
+
+<Result Status="404"
+        Title="404"
+        SubTitle="Sorry, the page you visited does not exist.">
+    <Extra>
+        <Button Type="primary" 
+            OnClick="@(() => _navigation.NavigateTo("/"))">
+            Back Home
+        </Button>
+    </Extra>
+</Result>
