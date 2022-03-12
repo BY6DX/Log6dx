@@ -3,7 +3,7 @@
 <AntDesign.ProLayout.BasicLayout 
     Logo="@("assets/logo.svg")"
     MenuData="_menuData"
-    MenuRender = "@true">
+    MenuRender = "@(_authentication.User is not null)">
     <RightContentRender>
         <Server.Components.HeaderRightContent />
     </RightContentRender>
@@ -11,10 +11,10 @@
         @Body
     </ChildContent>
     <FooterRender>
-        <FooterView Copyright="@($"{DateTime.Now.Year} USTC Amateur Radio Club")" Links="Links"></FooterView>
+        <Server.Layouts.Footer />
     </FooterRender>
 </AntDesign.ProLayout.BasicLayout>
-<SettingDrawer />
+@*<SettingDrawer />*@
 
 @code
 {
@@ -26,31 +26,6 @@
             Name = "welcome",
             Key = "welcome",
             Icon = "smile",
-        }
-    };
-
-    public LinkItem[] Links { get; set; } =
-    {
-        new LinkItem
-        {
-            Key = "qsl.net",
-            Title = "QSL.NET/BY6DX",
-            Href = "https://www.qsl.net/by6dx/",
-            BlankTarget = true,
-        },
-        new LinkItem
-        {
-            Key = "github",
-            Title = (RenderFragment)(@<Icon Type="github" />),
-            Href = "https://github.com/BY6DX",
-            BlankTarget = true,
-        },
-        new LinkItem
-        {
-            Key = "email",
-            Title = "radio@ustc.edu.cn",
-            Href = "mailto:radio@ustc.edu.cn",
-            BlankTarget = true,
         }
     };
 }

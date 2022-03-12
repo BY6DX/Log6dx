@@ -1,0 +1,14 @@
+﻿.main {
+    width: 368px;
+    max-width: 95%;
+    margin: 0 auto;
+}
+
+::deep .login .register {
+    float: right;
+}
+
+::deep .login .submit {
+    width: 100%;
+    margin-top: 24px;
+}

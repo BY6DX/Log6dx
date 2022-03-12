@@ -1,0 +1,79 @@
+﻿@inherits AntDomComponentBase
+
+<footer class="@ClassMapper.Class" style="@Style" id="@Id">
+    <div class="@BaseClassName-links">
+        @foreach (var link in Links)
+        {
+        <a key="@link.Key"
+            title="@link.Key"
+            target=@(link.BlankTarget ? "_blank" : "_self" )
+            href=@link.Href>
+            @if (link.Title.IsT0)
+            {
+                @link.Title.AsT0
+            }
+            else
+            {
+                @link.Title.AsT1
+            }
+        </a>
+        }
+    </div>
+    <div class="@BaseClassName-copyright">@Copyright</div>
+    @if (_authentication.User is null)
+    {
+    <div class="@BaseClassName-login">
+    <a key="login"
+        title="Login"
+        target="_self"
+        href="/login">
+        Operator Login
+    </a>
+    </div>
+    }
+</footer>
+
+@code {
+    private const string PrefixCls = "ant-pro";
+    private const string BaseClassName = PrefixCls + "-global-footer";
+
+    public LinkItem[] Links { get; set; } = 
+    {
+        new LinkItem
+        {
+            Key = "qsl.net",
+            Title = "QSL.NET/BY6DX",
+            Href = "https://www.qsl.net/by6dx/",
+            BlankTarget = true,
+        },
+        new LinkItem
+        {
+            Key = "github",
+            Title = (RenderFragment)(@<Icon Type="github"/>),
+            Href = "https://github.com/BY6DX",
+            BlankTarget = true,
+        },
+        new LinkItem
+        {
+            Key = "email",
+            Title = "radio@ustc.edu.cn",
+            Href = "mailto:radio@ustc.edu.cn",
+            BlankTarget = true,
+        }
+    };
+
+    public string Copyright = $"{DateTime.Now.Year} USTC Amateur Radio Club";
+
+    protected void SetClassMap()
+    {
+        ClassMapper
+            .Clear()
+            .Add(BaseClassName);
+    }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        SetClassMap();
+    }
+}
