@@ -1,0 +1,40 @@
+﻿@inherits AntDomComponentBase
+
+<Space Class="@ClassMapper.Class">
+    @if (_authentication.User is not null)
+    {
+    <SpaceItem>
+        <AvatarDropdown Name="@_authentication.User.Name"
+                        Avatar="@_authentication.User.Avatar"
+                        MenuItems="@AvatarMenuItems"
+                        OnItemSelected="HandleSelectUser" />
+    </SpaceItem>
+    }
+</Space>
+
+@code {
+    public AvatarMenuItem[] AvatarMenuItems { get; set; } = new AvatarMenuItem[]
+    {
+        new() { Key = "center", IconType = "user", Option = "个人中心"},
+        new() { Key = "setting", IconType = "setting", Option = "个人设置"},
+        new() { IsDivider = true },
+        new() { Key = "logout", IconType = "logout", Option = "退出登录"}
+    };
+
+    public void HandleSelectUser(MenuItem item)
+    {
+        switch (item.Key)
+        {
+            case "center":
+                _navigation.NavigateTo("/account/center");
+                break;
+            case "setting":
+                _navigation.NavigateTo("/account/settings");
+                break;
+            case "logout":
+                _authentication.Logout();
+                _navigation.NavigateTo("/login");
+                break;
+        }
+    }
+}

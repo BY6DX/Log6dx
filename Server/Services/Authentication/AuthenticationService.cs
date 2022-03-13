@@ -39,6 +39,7 @@ namespace Server.Services.Authentication
                 var delegates = LoginEventAsync.GetInvocationList();
                 foreach (var @delegate in delegates)
                 {
+                    if (@delegate is null) continue;
                     var func = (NotifyStateChangedAsyncHandler)@delegate;
                     await func?.Invoke();
                 }
@@ -54,6 +55,7 @@ namespace Server.Services.Authentication
                 var delegates = LogoutEventAsync.GetInvocationList();
                 foreach (var @delegate in delegates)
                 {
+                    if (@delegate is null) continue;
                     var func = (NotifyStateChangedAsyncHandler)@delegate;
                     await func?.Invoke();
                 }

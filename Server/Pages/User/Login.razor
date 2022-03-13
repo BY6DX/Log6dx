@@ -5,12 +5,12 @@
     <div class="login">
         <Form Model="@_model" OnFinish="HandleSubmit">
             <FormItem>
-                <AntDesign.Input Placeholder="Username: admin or user" Size="large" @bind-Value="@context.UserName">
+                <AntDesign.Input Placeholder="Username" Size="large" @bind-Value="@context.Username">
                     <Prefix><Icon Type="user" /></Prefix>
                 </AntDesign.Input>
             </FormItem>
             <FormItem>
-                <AntDesign.Input Placeholder="Password: ant.design" Size="large" @bind-Value="@context.Password" Type="password">
+                <AntDesign.Input Placeholder="Password" Size="large" @bind-Value="@context.Password" Type="password">
                     <Prefix><Icon Type="lock" /></Prefix>
                 </AntDesign.Input>
             </FormItem>
@@ -30,24 +30,21 @@
 @code {
     private readonly LoginParamsType _model = new LoginParamsType();
 
-    public void HandleSubmit() {
-        if (_model.UserName == "admin" && _model.Password == "ant.design") {
-            _navigation.NavigateTo("/");
-            return;
+    async void HandleSubmit() {
+        var user = await _authentication.Login(_model.Username, _model.Password);
+        if (user is null)
+        {
+            _message.Error("Incorrect username or password, login failed.");
         }
-
-        if (_model.UserName == "user" && _model.Password == "ant.design") _navigation.NavigateTo("/");
+        else
+        {
+            _navigation.NavigateTo("/");
+        }
     }
 
-    public async Task GetCaptcha() {
-        //var captcha = await AccountService.GetCaptchaAsync(_model.Mobile);
-        var captcha = 1234;
-        await _message.Success($"Verification code validated successfully! The verification code is: {captcha}");
-    }
-
-    public class LoginParamsType
+    class LoginParamsType
     {
-        [Required] public string UserName { get; set; }
+        [Required] public string Username { get; set; }
 
         [Required] public string Password { get; set; }
 

@@ -51,6 +51,10 @@ ol {
   }
 }
 
-.ant-pro-global-footer-copyright {
-    margin-bottom: 8px;
+.ant-pro-global-footer-login {
+    margin-top: 8px;
+}
+
+.ant-avatar > img {
+    background-color: white;
 }

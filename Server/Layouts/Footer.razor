@@ -75,5 +75,6 @@
     {
         base.OnInitialized();
         SetClassMap();
+        _authentication.AuthenticationStateChanged += _ => { StateHasChanged(); };
     }
 }

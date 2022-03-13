@@ -21,12 +21,13 @@ namespace Server.Services.Authentication
             return await Task.FromResult(new AuthenticationState(claims));
         }
 
-        public override Task<User> Login(string id, string password)
+        public override async Task<User> Login(string id, string password)
         {
             if (string.IsNullOrWhiteSpace(id)) return null;
 
             _user = new User
             {
+                Name = id,
             };
 
             var identity = GetClaimsIdentity("Login");
@@ -34,7 +35,7 @@ namespace Server.Services.Authentication
 
             NotifyAuthenticationStateChanged(Task.FromResult(new AuthenticationState(claims)));
 
-            return new Task<User>(() => _user);
+            return await Task.FromResult(_user);
         }
 
         public override void Logout()
@@ -55,7 +56,7 @@ namespace Server.Services.Authentication
             else
                 identity = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.AuthorizationDecision, "")
+                    new Claim(ClaimTypes.Name, _user.Name)
                 },authenticationType);
 
             return identity;

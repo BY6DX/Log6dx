@@ -5,7 +5,10 @@
     MenuData="_menuData"
     MenuRender = "@(_authentication.User is not null)">
     <RightContentRender>
-        <Server.Components.HeaderRightContent />
+        @if (_authentication.User is not null)
+        {
+            <Server.Components.HeaderAccountContent />
+        }
     </RightContentRender>
     <ChildContent>
         @Body
