@@ -1,0 +1,42 @@
+﻿<div class="baseView">
+    <div class="left" style="min-width: 310px;">
+        <Form 
+            Layout="vertical"
+            OnFinish="UpdateInfomation"
+            Model="@_authentication.User">
+            <FormItem Label="Email">
+                <AntDesign.Input @bind-Value="@context.Email" />
+            </FormItem>
+            <FormItem Label="Nickname">
+                <AntDesign.Input @bind-Value="@context.Name" />
+            </FormItem>
+            <FormItem>
+                <Button HtmlType="submit" Type="primary">
+                    Update Information
+                </Button>
+            </FormItem>
+        </Form>
+    </div>
+    <div class="right__b__1">
+        <div class="avatar_title">
+            Avatar
+        </div>
+        <div class="avatar">
+            <img src="@_authentication.User.Avatar" alt="avatar" />
+        </div>
+        <Upload ShowUploadList="false">
+            <div class="button_view">
+                <Button Icon="upload">
+                    Change avatar
+                </Button>
+            </div>
+        </Upload>
+    </div>
+</div>
+
+@code {
+    void UpdateInfomation()
+    {
+        
+    }
+}

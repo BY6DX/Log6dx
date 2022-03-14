@@ -1,7 +1,7 @@
 ﻿@page "/login"
 @using System.ComponentModel.DataAnnotations
 
-<div class="main">
+<div class="main__b__0">
     <div class="login">
         <Form Model="@_model" OnFinish="HandleSubmit">
             <FormItem>
@@ -34,7 +34,7 @@
         var user = await _authentication.Login(_model.Username, _model.Password);
         if (user is null)
         {
-            _message.Error("Incorrect username or password, login failed.");
+            await _message.Error("Incorrect username or password, login failed.");
         }
         else
         {

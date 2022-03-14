@@ -3,13 +3,13 @@
         <Found Context="routeData">
             <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(Server.Layouts.BasicLayout)">
                 <NotAuthorized>
-                    <Server.Pages.Exception._403 />
+                    <Server.Components.Exception._403 />
                 </NotAuthorized>
             </AuthorizeRouteView>
         </Found>
         <NotFound >
             <LayoutView Layout="@typeof(Server.Layouts.BasicLayout)">
-                <Server.Pages.Exception._404 />
+                <Server.Components.Exception._404 />
             </LayoutView>
         </NotFound>
     </Router>
