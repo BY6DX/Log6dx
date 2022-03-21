@@ -1,6 +1,7 @@
 ﻿@page "/account"
 @attribute [Authorize]
 
+<PageContainer Title="Account Settings">
 <GridContent>
     <div class="main__b__2">
         <div class="leftMenu">
@@ -31,6 +32,7 @@
         </div>
     </div>
 </GridContent>
+</PageContainer>
 
 @code {
     private readonly Dictionary<string, string> _menuMap = new Dictionary<string, string>
